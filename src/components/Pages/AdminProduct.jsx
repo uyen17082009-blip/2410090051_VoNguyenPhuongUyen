@@ -83,52 +83,41 @@ function AdminProduct({ embedded = false }) {
     return products.filter((p) => String(p.id) === q);
   }, [products, appliedSearchId]);
 
-  const persist = useCallback(async (nextList) => {
-    setSaving(true);
-    setSaveError('');
-    try {
-      await axios.put('/api/product', nextList, {
-        headers: { 'Content-Type': 'application/json' },
-      });
-      setProducts(nextList);
-      setView('list');
-      setForm(emptyForm());
-      setIsNew(false);
-    } catch (err) {
-      const msg =
-        err.response?.data?.error ||
-        (err.code === 'ERR_NETWORK' || err.response?.status === 404
-          ? 'Chỉ lưu được khi chạy npm run dev hoặc npm run preview (API Vite).'
-          : null) ||
-        'Không lưu được dữ liệu.';
-      setSaveError(msg);
-    } finally {
-      setSaving(false);
-    }
-  }, []);
+const persist = useCallback((nextList) => {
+  setSaving(true);
+  setSaveError('');
+  
+  setProducts(nextList);
+  localStorage.setItem('products_data', JSON.stringify(nextList));
+  
+  setView('list');
+  setForm(emptyForm());
+  setIsNew(false);
+  setSaving(false);
+}, []);
 
-  useEffect(() => {
-    if (embedded) {
-      setAllowed(true);
-      return;
+useEffect(() => {
+  if (!allowed) return;
+  const load = () => {
+    setLoading(true);
+    setLoadError('');
+    const saved = localStorage.getItem('products_data');
+    if (saved) {
+      setProducts(JSON.parse(saved));
+      setLoading(false);
+    } else {
+      fetch(`${jsonBase}product.json`)
+        .then(res => res.json())
+        .then(data => {
+          setProducts(Array.isArray(data) ? data : []);
+          localStorage.setItem('products_data', JSON.stringify(data));
+        })
+        .catch(() => setLoadError('Lỗi tải dữ liệu'))
+        .finally(() => setLoading(false));
     }
-    const raw = localStorage.getItem('currentUser');
-    if (!raw) {
-      navigate('/login');
-      return;
-    }
-    try {
-      const u = JSON.parse(raw);
-      if (u.role !== 'staff') {
-        navigate('/');
-        return;
-      }
-      setAllowed(true);
-    } catch {
-      navigate('/login');
-    }
-  }, [navigate, embedded]);
-
+  };
+  load();
+}, [allowed]);
   useEffect(() => {
     if (!allowed) return;
     const load = async () => {
