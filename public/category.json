@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Sản phẩm chăm sóc da mặt"
+    },
+    {
+        "id": 2,
+        "name": "Sản phẩm chăm sóc tóc"
+    },
+    {
+        "id": 3,
+        "name": "Sản phẩm trang điểm"
+    },
+    {
+        "id": 4,
+        "name": "Sản phẩm chăm sóc cơ thể"
+    },
+    {
+        "id": 5,
+        "name": "Sản phẩm chăm sóc cá nhân"
+    },
+    {
+        "id": 6,
+        "name": "Sản phẩm chăm sóc sức khỏe"
+    },
+    {
+        "id": 7,
+        "name": "Sản phẩm chăm sóc môi"
+    },
+    {
+        "id": 8,
+        "name": "Sản phẩm nước hoa & mùi hương"
+    },
+    {
+        "id": 9,
+        "name": "Dụng cụ làm đẹp & Phụ kiện"
+    },
+    {
+        "id": 10,
+        "name": "Bộ sản phẩm & Quà tặng"
+    }
+]

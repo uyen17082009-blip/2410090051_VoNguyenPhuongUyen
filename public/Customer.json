@@ -1,0 +1,162 @@
+[
+  {
+    "id": "KH001",
+    "name": "Ngô Bảo Tú",
+    "phone": "0787760318",
+    "email": "tu1@gmail.com",
+    "address": "116 Nguyễn Huệ, Bến Tre",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH003",
+    "name": "Trần Minh Tâm",
+    "phone": "0905123456",
+    "email": "tamminhtam.beauty@gmail.com",
+    "address": "45 Lê Lợi, Quận 1, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH005",
+    "name": "Lê Thị Hồng Thắm",
+    "phone": "0934888999",
+    "email": "hongtham.le9x@gmail.com",
+    "address": "789 Cách Mạng Tháng 8, Cần Thơ",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH009",
+    "name": "Spa Lan Ngọc",
+    "phone": "02833445566",
+    "email": "lanngocspa.contact@gmail.com",
+    "address": "12 Nguyễn Trãi, Quận 5, TP.HCM",
+    "type": "Doanh nghiệp"
+  },
+  {
+    "id": "KH012",
+    "name": "Phạm Hoàng Yến",
+    "phone": "0977222333",
+    "email": "hoangyen.skincare@gmail.com",
+    "address": "Đường số 10, Hiệp Bình Chánh, Thủ Đức",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH015",
+    "name": "Vũ Nam Khánh",
+    "phone": "0868111222",
+    "email": "khanhvu.cosmetic@gmail.com",
+    "address": "Khu đô thị Sala, Quận 2, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH019",
+    "name": "Đặng Thu Thảo",
+    "phone": "0912333444",
+    "email": "thuthao.dalat@gmail.com",
+    "address": "32 Hùng Vương, Đà Lạt",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH022",
+    "name": "Nguyễn Bích Phương",
+    "phone": "0909555666",
+    "email": "bichphuong.vungtau@gmail.com",
+    "address": "156 Nam Kỳ Khởi Nghĩa, Vũng Tàu",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH033",
+    "name": "Mỹ Phẩm Thanh Xuân",
+    "phone": "02433998877",
+    "email": "thanhxuan.cosmetics@gmail.com",
+    "address": "210 Cầu Giấy, Hà Nội",
+    "type": "Doanh nghiệp"
+  },
+  {
+    "id": "KH042",
+    "name": "Hoàng Trọng Nghĩa",
+    "phone": "0988666777",
+    "email": "trongnghia.hcm@gmail.com",
+    "address": "Căn hộ Vinhomes, Bình Thạnh, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH045",
+    "name": "Lý Gia Hân",
+    "phone": "0777444555",
+    "email": "giahanly.makeup@gmail.com",
+    "address": "44 Võ Văn Kiệt, Quận 1, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH056",
+    "name": "Bùi Tuyết Nhung",
+    "phone": "0355111222",
+    "email": "tuyetnhung.govap@gmail.com",
+    "address": "90 Quang Trung, Gò Vấp, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH061",
+    "name": "Trương Ngọc Ánh",
+    "phone": "0944000111",
+    "email": "ngocanh.truong@gmail.com",
+    "address": "Phú Mỹ Hưng, Quận 7, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH077",
+    "name": "Võ Minh Trí",
+    "phone": "0903888777",
+    "email": "minhtri.vo88@gmail.com",
+    "address": "Lầu 5, Bitexco Financial Tower, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH083",
+    "name": "Nguyễn Thùy Linh",
+    "phone": "0987654321",
+    "email": "thuylinh.hanoi@gmail.com",
+    "address": "78 Trần Hưng Đạo, Hoàn Kiếm, Hà Nội",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH088",
+    "name": "Đỗ Kim Anh",
+    "phone": "0933222111",
+    "email": "kimanh.beauty@gmail.com",
+    "address": "Chung cư Sunrise City, Quận 7, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH099",
+    "name": "Cửa Hàng Aline Beauty",
+    "phone": "02877665544",
+    "email": "alinebeauty.vn@gmail.com",
+    "address": "200 Lê Văn Sỹ, Phú Nhuận, TP.HCM",
+    "type": "Doanh nghiệp"
+  },
+  {
+    "id": "KH120",
+    "name": "Phạm Thành Long",
+    "phone": "0918777888",
+    "email": "thanhlong.pham@gmail.com",
+    "address": "Biệt thự Thảo Điền, Quận 2, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH150",
+    "name": "Hồ Ngọc Hà",
+    "phone": "0902123789",
+    "email": "ngochaho.official@gmail.com",
+    "address": "11 Đoàn Văn Bơ, Quận 4, TP.HCM",
+    "type": "Cá nhân"
+  },
+  {
+    "id": "KH200",
+    "name": "Tổng Kho Mỹ Phẩm Miền Tây",
+    "phone": "02923556677",
+    "email": "tongkhomientay.mp@gmail.com",
+    "address": "Khu công nghiệp Trà Nóc, Cần Thơ",
+    "type": "Doanh nghiệp"
+  }
+]

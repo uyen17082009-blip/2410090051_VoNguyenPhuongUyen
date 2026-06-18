@@ -1,0 +1,228 @@
+.booking-page {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #4A4A4A;
+}
+
+.booking-page h2 {
+    font-size: 28px;
+    color: #6D597A;
+    margin-bottom: 30px;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Danh sách sản phẩm (Layout cũ) */
+.booking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.booking-item {
+    background: #FDFBFF;
+    border: 1px solid #D9BCE8;
+    border-radius: 20px;
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.booking-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    background: #F3EEF5;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.item-info {
+    flex: 1;
+}
+
+.item-info h4 {
+    margin: 0 0 5px 0;
+    font-size: 15px;
+}
+
+.item-info p {
+    font-size: 14px;
+    color: #B5838D;
+    font-weight: 600;
+}
+
+.remove-btn {
+    background: #F3EEF5;
+    color: #957DAD;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* Form Style */
+.booking-form {
+    background: #FDFBFF;
+    border: 1px solid #D9BCE8;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.booking-form input,
+.booking-form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid #D9BCE8;
+    box-sizing: border-box;
+}
+
+/* Nút Radio dạng Button */
+.radio-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-button {
+    padding: 12px 30px;
+    border: 2px solid #D9BCE8;
+    border-radius: 25px;
+    color: #6D597A;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: #ffffff;
+}
+
+.radio-group input[type="radio"]:checked+.radio-button {
+    background: #957DAD;
+    color: white;
+    border-color: #957DAD;
+}
+
+/* Submit Button & Empty State */
+.submit-btn {
+    width: 100%;
+    background: #957DAD;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.empty-booking {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 20px;
+    text-align: center;
+    background: #ffffff;
+    border: 1px solid #E6D7ED;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.empty-icon {
+    width: 120px;
+    height: 120px;
+    background: #F3EEF5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #76637e;
+    margin-bottom: 30px;
+}
+
+.explore-btn {
+    background: #957DAD;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+}
+/* Thêm đoạn này để phần Size và Giá trông nổi bật hơn */
+.item-details {
+    font-size: 14px;
+    color: #6D597A;
+    margin: 5px 0 0 0;
+}
+
+.item-details strong {
+    color: #957DAD; /* Màu tím chủ đạo */
+    background: #F3EEF5;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+/* Các phần khác giữ nguyên như file CSS hoàn chỉnh trước đó */
+.booking-item-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border: 1px solid #e0d0e6;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+}
+
+.item-img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.item-info {
+  flex: 1;
+  margin: 0 15px;
+}
+
+.item-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.item-details {
+  color: #76637e;
+  margin: 5px 0 0 0;
+  font-size: 14px;
+}
+
+.remove-btn {
+  background-color: #f3eff5;
+  color: #76637e;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.remove-btn:hover {
+  background-color: #e6dceb;
+}

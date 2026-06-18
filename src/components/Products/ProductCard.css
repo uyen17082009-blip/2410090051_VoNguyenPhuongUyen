@@ -1,0 +1,224 @@
+.product-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 15px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid #F3EEF5;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+.product-card:hover {
+    box-shadow: 0 15px 30px rgba(177, 156, 217, 0.2);
+    border-color: #E2D1F9;
+    z-index: 10;
+}
+
+.product-image-container {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    background: #fdfdfd;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+.product-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 12px 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 3em;
+}
+
+.product-ram-ssd {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.ram-ssd-tag {
+    background: #F3EEF5;
+    border: 1px solid #E2D1F9;
+    color: #8E7AB5;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: default;
+    outline: none !important;
+}
+
+.product-pricing {
+    margin-bottom: 12px;
+}
+
+.current-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #B19CD9;
+    margin-bottom: 4px;
+}
+
+.original-price-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #A0A0A0;
+}
+
+.discount {
+    color: #ffffff;
+    background: #FF8FB1;
+    padding: 1px 8px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 10px;
+}
+
+.product-rating-sales {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.rating {
+    font-weight: 600;
+    color: #FFA41C;
+}
+
+.compare-button {
+    width: 100%;
+    background: #B19CD9; 
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: auto; 
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.compare-button:hover:not(:disabled) {
+    background: #9A83C7;
+}
+
+.compare-button:active {
+    transform: scale(0.98);
+}
+
+.compare-button:disabled {
+    background: #E0E0E0;
+    cursor: not-allowed;
+}
+
+.error-text {
+    color: #ff4d4d;
+    font-size: 0.7rem;
+    margin-top: 8px;
+    text-align: center;
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        padding: 10px;
+        border-radius: 15px;
+    }
+    .product-name {
+        font-size: 0.85rem;
+        height: 2.6em;
+    }
+    .current-price {
+        font-size: 1rem;
+    }
+    .compare-button {
+        padding: 8px;
+        font-size: 0.85rem;
+    }
+}
+/* Nút trái tim góc phải trên cùng */
+.wishlist-heart-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    color: #bca0dc;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.wishlist-heart-btn:hover {
+    transform: scale(1.1);
+    background: #fff;
+}
+
+.wishlist-heart-btn.active {
+    color: #ff85b2;
+    background: #fffdfd;
+}
+
+/* Flex layout cho cụm nút mới bên dưới */
+.product-card-actions {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Nút Đặt lịch hẹn kế bên nút mua ngay */
+.preorder-icon-btn {
+    background: #f3effa;
+    color: #8e74ad;
+    border: 1px solid #e2d1f9;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preorder-icon-btn:hover {
+    background: #bca0dc;
+    color: #fff;
+    border-color: #bca0dc;
+}

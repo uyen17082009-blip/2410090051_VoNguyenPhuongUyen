@@ -1,0 +1,62 @@
+[
+    {
+        "account": "Phuong Uyen",
+        "username": "pu",
+        "password": "123",
+        "role": "staff"
+    },
+    {
+        "account": "Trần Thị Mai",
+        "username": "mai_customer",
+        "password": "123",
+        "role": "customer"
+    },
+    {
+        "account": "Lê Văn Hải",
+        "username": "hai_staff",
+        "password": "123",
+        "role": "staff"
+    },
+    {
+        "account": "Phạm Thanh Thảo",
+        "username": "thao_customer",
+        "password": "123",
+        "role": "customer"
+    },
+    {
+        "account": "Vũ Minh Quân",
+        "username": "quan_staff",
+        "password": "123",
+        "role": "staff"
+    },
+    {
+        "account": "Đặng Hồng Nhung",
+        "username": "nhung_customer",
+        "password": "123",
+        "role": "customer"
+    },
+    {
+        "account": "Hoàng Anh Tuấn",
+        "username": "tuan_staff",
+        "password": "123",
+        "role": "staff"
+    },
+    {
+        "account": "Bùi Minh Tuyết",
+        "username": "tuyet_customer",
+        "password": "123",
+        "role": "customer"
+    },
+    {
+        "account": "Đỗ Gia Bảo",
+        "username": "bao_staff",
+        "password": "123",
+        "role": "staff"
+    },
+    {
+        "account": "Ngô Thùy Linh",
+        "username": "linh_customer",
+        "password": "123",
+        "role": "customer"
+    }
+]

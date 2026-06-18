@@ -1,0 +1,882 @@
+[
+  {
+    "id": 1,
+    "bill_id": 1,
+    "product_id": 1,
+    "quantity": 2,
+    "unit_price": 350000,
+    "price": 700000
+  },
+  {
+    "id": 2,
+    "bill_id": 1,
+    "product_id": 7,
+    "quantity": 1,
+    "unit_price": 550000,
+    "price": 550000
+  },
+  {
+    "id": 3,
+    "bill_id": 1,
+    "product_id": 50,
+    "quantity": 2,
+    "unit_price": 45000,
+    "price": 90000
+  },
+  {
+    "id": 4,
+    "bill_id": 2,
+    "product_id": 61,
+    "quantity": 1,
+    "unit_price": 850000,
+    "price": 850000
+  },
+  {
+    "id": 5,
+    "bill_id": 2,
+    "product_id": 68,
+    "quantity": 1,
+    "unit_price": 65000,
+    "price": 65000
+  },
+  {
+    "id": 6,
+    "bill_id": 3,
+    "product_id": 81,
+    "quantity": 1,
+    "unit_price": 2100000,
+    "price": 2100000
+  },
+  {
+    "id": 7,
+    "bill_id": 3,
+    "product_id": 1,
+    "quantity": 1,
+    "unit_price": 350000,
+    "price": 350000
+  },
+  {
+    "id": 8,
+    "bill_id": 4,
+    "product_id": 64,
+    "quantity": 2,
+    "unit_price": 160000,
+    "price": 320000
+  },
+  {
+    "id": 9,
+    "bill_id": 4,
+    "product_id": 50,
+    "quantity": 3,
+    "unit_price": 45000,
+    "price": 135000
+  },
+  {
+    "id": 10,
+    "bill_id": 4,
+    "product_id": 2,
+    "quantity": 1,
+    "unit_price": 350000,
+    "price": 350000
+  },
+  {
+    "id": 11,
+    "bill_id": 5,
+    "product_id": 91,
+    "quantity": 1,
+    "unit_price": 3200000,
+    "price": 3200000
+  },
+  {
+    "id": 12,
+    "bill_id": 5,
+    "product_id": 3,
+    "quantity": 1,
+    "unit_price": 950000,
+    "price": 950000
+  },
+  {
+    "id": 13,
+    "bill_id": 6,
+    "product_id": 71,
+    "quantity": 1,
+    "unit_price": 3800000,
+    "price": 3800000
+  },
+  {
+    "id": 14,
+    "bill_id": 6,
+    "product_id": 30,
+    "quantity": 2,
+    "unit_price": 345000,
+    "price": 690000
+  },
+  {
+    "id": 15,
+    "bill_id": 6,
+    "product_id": 4,
+    "quantity": 1,
+    "unit_price": 320000,
+    "price": 320000
+  },
+  {
+    "id": 16,
+    "bill_id": 7,
+    "product_id": 65,
+    "quantity": 4,
+    "unit_price": 35000,
+    "price": 140000
+  },
+  {
+    "id": 17,
+    "bill_id": 7,
+    "product_id": 5,
+    "quantity": 1,
+    "unit_price": 630000,
+    "price": 630000
+  },
+  {
+    "id": 18,
+    "bill_id": 8,
+    "product_id": 11,
+    "quantity": 1,
+    "unit_price": 580000,
+    "price": 580000
+  },
+  {
+    "id": 19,
+    "bill_id": 8,
+    "product_id": 12,
+    "quantity": 2,
+    "unit_price": 200000,
+    "price": 400000
+  },
+  {
+    "id": 20,
+    "bill_id": 8,
+    "product_id": 6,
+    "quantity": 1,
+    "unit_price": 340000,
+    "price": 340000
+  },
+  {
+    "id": 21,
+    "bill_id": 9,
+    "product_id": 81,
+    "quantity": 1,
+    "unit_price": 3500000,
+    "price": 3500000
+  },
+  {
+    "id": 22,
+    "bill_id": 9,
+    "product_id": 93,
+    "quantity": 1,
+    "unit_price": 2100000,
+    "price": 2100000
+  },
+  {
+    "id": 23,
+    "bill_id": 9,
+    "product_id": 7,
+    "quantity": 1,
+    "unit_price": 550000,
+    "price": 550000
+  },
+  {
+    "id": 24,
+    "bill_id": 10,
+    "product_id": 96,
+    "quantity": 1,
+    "unit_price": 250000,
+    "price": 250000
+  },
+  {
+    "id": 25,
+    "bill_id": 10,
+    "product_id": 8,
+    "quantity": 1,
+    "unit_price": 890000,
+    "price": 890000
+  },
+  {
+    "id": 26,
+    "bill_id": 11,
+    "product_id": 21,
+    "quantity": 2,
+    "unit_price": 210000,
+    "price": 420000
+  },
+  {
+    "id": 27,
+    "bill_id": 11,
+    "product_id": 24,
+    "quantity": 1,
+    "unit_price": 930000,
+    "price": 930000
+  },
+  {
+    "id": 28,
+    "bill_id": 11,
+    "product_id": 9,
+    "quantity": 2,
+    "unit_price": 390000,
+    "price": 780000
+  },
+  {
+    "id": 29,
+    "bill_id": 12,
+    "product_id": 41,
+    "quantity": 1,
+    "unit_price": 720000,
+    "price": 720000
+  },
+  {
+    "id": 30,
+    "bill_id": 12,
+    "product_id": 10,
+    "quantity": 1,
+    "unit_price": 1800000,
+    "price": 1800000
+  },
+  {
+    "id": 31,
+    "bill_id": 13,
+    "product_id": 100,
+    "quantity": 2,
+    "unit_price": 380000,
+    "price": 760000
+  },
+  {
+    "id": 32,
+    "bill_id": 13,
+    "product_id": 72,
+    "quantity": 1,
+    "unit_price": 2090000,
+    "price": 2090000
+  },
+  {
+    "id": 33,
+    "bill_id": 13,
+    "product_id": 11,
+    "quantity": 1,
+    "unit_price": 580000,
+    "price": 580000
+  },
+  {
+    "id": 34,
+    "bill_id": 14,
+    "product_id": 67,
+    "quantity": 1,
+    "unit_price": 95000,
+    "price": 95000
+  },
+  {
+    "id": 35,
+    "bill_id": 14,
+    "product_id": 12,
+    "quantity": 1,
+    "unit_price": 200000,
+    "price": 200000
+  },
+  {
+    "id": 36,
+    "bill_id": 15,
+    "product_id": 78,
+    "quantity": 1,
+    "unit_price": 1900000,
+    "price": 1900000
+  },
+  {
+    "id": 37,
+    "bill_id": 15,
+    "product_id": 13,
+    "quantity": 1,
+    "unit_price": 250000,
+    "price": 250000
+  },
+  {
+    "id": 38,
+    "bill_id": 16,
+    "product_id": 5,
+    "quantity": 1,
+    "unit_price": 630000,
+    "price": 630000
+  },
+  {
+    "id": 39,
+    "bill_id": 16,
+    "product_id": 14,
+    "quantity": 1,
+    "unit_price": 120000,
+    "price": 120000
+  },
+  {
+    "id": 40,
+    "bill_id": 17,
+    "product_id": 13,
+    "quantity": 2,
+    "unit_price": 250000,
+    "price": 500000
+  },
+  {
+    "id": 41,
+    "bill_id": 17,
+    "product_id": 15,
+    "quantity": 1,
+    "unit_price": 650000,
+    "price": 650000
+  },
+  {
+    "id": 42,
+    "bill_id": 17,
+    "product_id": 15,
+    "quantity": 1,
+    "unit_price": 650000,
+    "price": 650000
+  },
+  {
+    "id": 43,
+    "bill_id": 18,
+    "product_id": 2,
+    "quantity": 1,
+    "unit_price": 350000,
+    "price": 350000
+  },
+  {
+    "id": 44,
+    "bill_id": 18,
+    "product_id": 16,
+    "quantity": 1,
+    "unit_price": 145000,
+    "price": 145000
+  },
+  {
+    "id": 45,
+    "bill_id": 19,
+    "product_id": 40,
+    "quantity": 2,
+    "unit_price": 260000,
+    "price": 520000
+  },
+  {
+    "id": 46,
+    "bill_id": 19,
+    "product_id": 17,
+    "quantity": 1,
+    "unit_price": 410000,
+    "price": 410000
+  },
+  {
+    "id": 47,
+    "bill_id": 20,
+    "product_id": 91,
+    "quantity": 3,
+    "unit_price": 3500000,
+    "price": 10500000
+  },
+  {
+    "id": 48,
+    "bill_id": 20,
+    "product_id": 18,
+    "quantity": 1,
+    "unit_price": 720000,
+    "price": 720000
+  },
+  {
+    "id": 49,
+    "bill_id": 21,
+    "product_id": 22,
+    "quantity": 1,
+    "unit_price": 180000,
+    "price": 180000
+  },
+  {
+    "id": 50,
+    "bill_id": 21,
+    "product_id": 25,
+    "quantity": 1,
+    "unit_price": 220000,
+    "price": 220000
+  },
+  {
+    "id": 51,
+    "bill_id": 21,
+    "product_id": 19,
+    "quantity": 1,
+    "unit_price": 110000,
+    "price": 110000
+  },
+  {
+    "id": 52,
+    "bill_id": 22,
+    "product_id": 31,
+    "quantity": 2,
+    "unit_price": 150000,
+    "price": 300000
+  },
+  {
+    "id": 53,
+    "bill_id": 22,
+    "product_id": 20,
+    "quantity": 1,
+    "unit_price": 95000,
+    "price": 95000
+  },
+  {
+    "id": 54,
+    "bill_id": 23,
+    "product_id": 42,
+    "quantity": 4,
+    "unit_price": 210000,
+    "price": 840000
+  },
+  {
+    "id": 55,
+    "bill_id": 23,
+    "product_id": 21,
+    "quantity": 1,
+    "unit_price": 210000,
+    "price": 210000
+  },
+  {
+    "id": 56,
+    "bill_id": 24,
+    "product_id": 51,
+    "quantity": 1,
+    "unit_price": 450000,
+    "price": 450000
+  },
+  {
+    "id": 57,
+    "bill_id": 24,
+    "product_id": 22,
+    "quantity": 1,
+    "unit_price": 180000,
+    "price": 180000
+  },
+  {
+    "id": 58,
+    "bill_id": 25,
+    "product_id": 62,
+    "quantity": 2,
+    "unit_price": 380000,
+    "price": 760000
+  },
+  {
+    "id": 59,
+    "bill_id": 25,
+    "product_id": 23,
+    "quantity": 1,
+    "unit_price": 250000,
+    "price": 250000
+  },
+  {
+    "id": 60,
+    "bill_id": 26,
+    "product_id": 73,
+    "quantity": 3,
+    "unit_price": 310000,
+    "price": 930000
+  },
+  {
+    "id": 61,
+    "bill_id": 26,
+    "product_id": 24,
+    "quantity": 1,
+    "unit_price": 930000,
+    "price": 930000
+  },
+  {
+    "id": 62,
+    "bill_id": 27,
+    "product_id": 82,
+    "quantity": 1,
+    "unit_price": 520000,
+    "price": 520000
+  },
+  {
+    "id": 63,
+    "bill_id": 27,
+    "product_id": 25,
+    "quantity": 1,
+    "unit_price": 220000,
+    "price": 220000
+  },
+  {
+    "id": 64,
+    "bill_id": 28,
+    "product_id": 92,
+    "quantity": 1,
+    "unit_price": 850000,
+    "price": 850000
+  },
+  {
+    "id": 65,
+    "bill_id": 28,
+    "product_id": 26,
+    "quantity": 1,
+    "unit_price": 195000,
+    "price": 195000
+  },
+  {
+    "id": 66,
+    "bill_id": 29,
+    "product_id": 3,
+    "quantity": 1,
+    "unit_price": 950000,
+    "price": 950000
+  },
+  {
+    "id": 67,
+    "bill_id": 29,
+    "product_id": 27,
+    "quantity": 1,
+    "unit_price": 850000,
+    "price": 850000
+  },
+  {
+    "id": 68,
+    "bill_id": 30,
+    "product_id": 14,
+    "quantity": 2,
+    "unit_price": 120000,
+    "price": 240000
+  },
+  {
+    "id": 69,
+    "bill_id": 30,
+    "product_id": 28,
+    "quantity": 1,
+    "unit_price": 95000,
+    "price": 95000
+  },
+  {
+    "id": 70,
+    "bill_id": 31,
+    "product_id": 23,
+    "quantity": 1,
+    "unit_price": 250000,
+    "price": 250000
+  },
+  {
+    "id": 71,
+    "bill_id": 31,
+    "product_id": 29,
+    "quantity": 1,
+    "unit_price": 680000,
+    "price": 680000
+  },
+  {
+    "id": 72,
+    "bill_id": 32,
+    "product_id": 32,
+    "quantity": 1,
+    "unit_price": 210000,
+    "price": 210000
+  },
+  {
+    "id": 73,
+    "bill_id": 32,
+    "product_id": 30,
+    "quantity": 1,
+    "unit_price": 120000,
+    "price": 120000
+  },
+  {
+    "id": 74,
+    "bill_id": 33,
+    "product_id": 43,
+    "quantity": 2,
+    "unit_price": 85000,
+    "price": 170000
+  },
+  {
+    "id": 75,
+    "bill_id": 33,
+    "product_id": 31,
+    "quantity": 1,
+    "unit_price": 150000,
+    "price": 150000
+  },
+  {
+    "id": 76,
+    "bill_id": 34,
+    "product_id": 52,
+    "quantity": 1,
+    "unit_price": 480000,
+    "price": 480000
+  },
+  {
+    "id": 77,
+    "bill_id": 34,
+    "product_id": 32,
+    "quantity": 1,
+    "unit_price": 210000,
+    "price": 210000
+  },
+  {
+    "id": 78,
+    "bill_id": 35,
+    "product_id": 63,
+    "quantity": 1,
+    "unit_price": 550000,
+    "price": 550000
+  },
+  {
+    "id": 79,
+    "bill_id": 35,
+    "product_id": 33,
+    "quantity": 1,
+    "unit_price": 115000,
+    "price": 115000
+  },
+  {
+    "id": 80,
+    "bill_id": 36,
+    "product_id": 74,
+    "quantity": 1,
+    "unit_price": 620000,
+    "price": 620000
+  },
+  {
+    "id": 81,
+    "bill_id": 36,
+    "product_id": 34,
+    "quantity": 1,
+    "unit_price": 290000,
+    "price": 290000
+  },
+  {
+    "id": 82,
+    "bill_id": 37,
+    "product_id": 83,
+    "quantity": 1,
+    "unit_price": 380000,
+    "price": 380000
+  },
+  {
+    "id": 83,
+    "bill_id": 37,
+    "product_id": 35,
+    "quantity": 1,
+    "unit_price": 245000,
+    "price": 245000
+  },
+  {
+    "id": 84,
+    "bill_id": 38,
+    "product_id": 94,
+    "quantity": 1,
+    "unit_price": 1200000,
+    "price": 1200000
+  },
+  {
+    "id": 85,
+    "bill_id": 38,
+    "product_id": 36,
+    "quantity": 1,
+    "unit_price": 380000,
+    "price": 380000
+  },
+  {
+    "id": 86,
+    "bill_id": 39,
+    "product_id": 4,
+    "quantity": 1,
+    "unit_price": 320000,
+    "price": 320000
+  },
+  {
+    "id": 87,
+    "bill_id": 39,
+    "product_id": 37,
+    "quantity": 1,
+    "unit_price": 520000,
+    "price": 520000
+  },
+  {
+    "id": 88,
+    "bill_id": 40,
+    "product_id": 16,
+    "quantity": 2,
+    "unit_price": 145000,
+    "price": 290000
+  },
+  {
+    "id": 89,
+    "bill_id": 40,
+    "product_id": 38,
+    "quantity": 1,
+    "unit_price": 45000,
+    "price": 45000
+  },
+  {
+    "id": 90,
+    "bill_id": 41,
+    "product_id": 26,
+    "quantity": 1,
+    "unit_price": 195000,
+    "price": 195000
+  },
+  {
+    "id": 91,
+    "bill_id": 41,
+    "product_id": 39,
+    "quantity": 1,
+    "unit_price": 420000,
+    "price": 420000
+  },
+  {
+    "id": 92,
+    "bill_id": 42,
+    "product_id": 33,
+    "quantity": 3,
+    "unit_price": 115000,
+    "price": 345000
+  },
+  {
+    "id": 93,
+    "bill_id": 43,
+    "product_id": 44,
+    "quantity": 10,
+    "unit_price": 35000,
+    "price": 350000
+  },
+  {
+    "id": 94,
+    "bill_id": 44,
+    "product_id": 53,
+    "quantity": 2,
+    "unit_price": 280000,
+    "price": 560000
+  },
+  {
+    "id": 95,
+    "bill_id": 45,
+    "product_id": 66,
+    "quantity": 1,
+    "unit_price": 310000,
+    "price": 310000
+  },
+  {
+    "id": 96,
+    "bill_id": 46,
+    "product_id": 75,
+    "quantity": 5,
+    "unit_price": 120000,
+    "price": 600000
+  },
+  {
+    "id": 97,
+    "bill_id": 47,
+    "product_id": 84,
+    "quantity": 2,
+    "unit_price": 420000,
+    "price": 840000
+  },
+  {
+    "id": 98,
+    "bill_id": 48,
+    "product_id": 95,
+    "quantity": 1,
+    "unit_price": 580000,
+    "price": 580000
+  },
+  {
+    "id": 99,
+    "bill_id": 49,
+    "product_id": 6,
+    "quantity": 1,
+    "unit_price": 340000,
+    "price": 340000
+  },
+  {
+    "id": 100,
+    "bill_id": 50,
+    "product_id": 17,
+    "quantity": 1,
+    "unit_price": 410000,
+    "price": 410000
+  },
+  {
+    "id": 101,
+    "bill_id": 51,
+    "product_id": 27,
+    "quantity": 1,
+    "unit_price": 850000,
+    "price": 850000
+  },
+  {
+    "id": 102,
+    "bill_id": 52,
+    "product_id": 34,
+    "quantity": 2,
+    "unit_price": 290000,
+    "price": 580000
+  },
+  {
+    "id": 103,
+    "bill_id": 53,
+    "product_id": 45,
+    "quantity": 1,
+    "unit_price": 180000,
+    "price": 180000
+  },
+  {
+    "id": 104,
+    "bill_id": 54,
+    "product_id": 54,
+    "quantity": 3,
+    "unit_price": 160000,
+    "price": 480000
+  },
+  {
+    "id": 105,
+    "bill_id": 55,
+    "product_id": 68,
+    "quantity": 5,
+    "unit_price": 65000,
+    "price": 325000
+  },
+  {
+    "id": 106,
+    "bill_id": 56,
+    "product_id": 76,
+    "quantity": 2,
+    "unit_price": 180000,
+    "price": 360000
+  },
+  {
+    "id": 107,
+    "bill_id": 57,
+    "product_id": 85,
+    "quantity": 1,
+    "unit_price": 1350000,
+    "price": 1350000
+  },
+  {
+    "id": 108,
+    "bill_id": 58,
+    "product_id": 97,
+    "quantity": 1,
+    "unit_price": 450000,
+    "price": 450000
+  },
+  {
+    "id": 109,
+    "bill_id": 59,
+    "product_id": 8,
+    "quantity": 1,
+    "unit_price": 890000,
+    "price": 890000
+  },
+  {
+    "id": 110,
+    "bill_id": 60,
+    "product_id": 18,
+    "quantity": 1,
+    "unit_price": 720000,
+    "price": 720000
+  }
+]

@@ -1,0 +1,434 @@
+:root {
+  --primary: #bca0dc;
+  --bg-light: #f3effa;
+  --dark: #8e74ad;
+  --text: #444;
+}
+
+.aline-header ul,
+.aline-header li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.header-container {
+  max-width: 1250px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.header-top-bar {
+  background: var(--bg-light);
+  padding: 8px 0;
+  font-size: 13px;
+  color: var(--dark);
+}
+
+.divider {
+  margin: 0 10px;
+  color: #ccc;
+}
+
+.lang-btn {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.lang-btn.active {
+  font-weight: bold;
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.header-main {
+  padding: 20px 0;
+  background: #fff;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 150px;
+}
+
+.header-logo img {
+  height: 85px;
+  width: auto;
+  cursor: pointer;
+  object-fit: contain;
+}
+
+.header-search {
+  flex: 0 1 500px;
+  display: flex;
+  border: 2px solid var(--bg-light);
+  border-radius: 30px;
+  overflow: hidden;
+  margin: 0 30px;
+}
+
+.header-search input {
+  flex: 1;
+  padding: 12px 25px;
+  border: none;
+  outline: none;
+}
+
+.header-search button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 0 25px;
+  cursor: pointer;
+}
+
+.header-actions {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.action-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.purple-icon {
+  font-size: 26px;
+  color: var(--primary);
+}
+
+.action-label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cart-icon-wrapper {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  background: #ff85b2;
+  color: #fff;
+  font-size: 10px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.header-nav {
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 2px solid var(--bg-light);
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: block;
+  padding: 18px 25px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+}
+
+.arrow-icon {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  min-width: 230px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 8px 8px;
+  z-index: 1000;
+  border-top: 3px solid var(--primary);
+  padding: 10px 0 !important;
+}
+
+.nav-item:hover .submenu {
+  display: block;
+  animation: slideDown 0.3s ease forwards;
+}
+
+.submenu li a {
+  display: block;
+  padding: 12px 28px !important;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 14px;
+  text-align: left;
+  transition: 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.submenu li a:hover {
+  background: var(--bg-light) !important;
+  color: var(--primary) !important;
+  padding-left: 33px !important;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.user-action-wrapper {
+  position: relative;
+}
+
+.user-action-wrapper .user-dropdown-menu {
+  position: absolute;
+  top: 140%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #fff;
+  min-width: 200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  border-top: 3px solid var(--primary);
+  padding: 8px 0 !important;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.user-action-wrapper.active .user-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.user-dropdown-menu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.user-dropdown-menu button i {
+  font-size: 16px;
+  color: var(--dark);
+  width: 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.user-dropdown-menu button:hover {
+  background: var(--bg-light) !important;
+  color: var(--primary) !important;
+  padding-left: 28px;
+}
+
+.user-dropdown-menu button:hover i {
+  color: var(--primary);
+}
+
+.user-dropdown-menu button.logout-btn {
+  border-top: 1px solid #f5f5f5;
+  margin-top: 6px;
+  padding-top: 14px;
+  color: #ff85b2;
+}
+
+.user-dropdown-menu button.logout-btn i {
+  color: #ff85b2;
+}
+
+.user-dropdown-menu button.logout-btn:hover {
+  background: #fff0f5 !important;
+  color: #d84b7d !important;
+  padding-left: 28px;
+}
+
+.user-dropdown-menu button.logout-btn:hover i {
+  color: #d84b7d;
+}
+
+.arrow-dropdown {
+  font-size: 11px;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+  color: var(--dark);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.user-action-wrapper.active .arrow-dropdown {
+  transform: rotate(180deg);
+  color: var(--primary);
+}
+/* Thêm vào cuối file Header.css */
+.header-search {
+  position: relative; /* Giúp danh sách gợi ý định vị chính xác theo thanh tìm kiếm */
+  overflow: visible !important; /* Ghi đè lại thuộc tính overflow: hidden cũ để hiện dropdown */
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-top: 3px solid var(--primary);
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+  display: none; /* Mặc định ẩn đi */
+  padding: 8px 0;
+}
+
+.search-suggestions.active {
+  display: block; /* Hiện khi có kết quả */
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 14px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: var(--bg-light);
+  color: var(--primary);
+}
+
+.suggestion-item img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.suggestion-item .product-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-item .product-price {
+  font-size: 12px;
+  color: var(--dark);
+  font-weight: bold;
+}
+
+.no-result {
+  padding: 15px 20px;
+  color: #999;
+  font-size: 14px;
+  text-align: center;
+}
+/* ==========================================================================
+   PHẦN CSS CẬP NHẬT & BỔ SUNG MỚI CHO HEADER (ALINE BEAUTY)
+   ========================================================================== */
+
+/* 1. Cập nhật lại khoảng cách giữa các icon ở thanh chính để không bị tràn hàng */
+.header-actions {
+  gap: 25px !important; /* Thu nhỏ khoảng cách giữa các biểu tượng từ 50px xuống 25px */
+}
+
+/* 2. Style riêng cho khu vực Icon Danh sách yêu thích mới */
+.header-wishlist {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng đổi màu hồng pastel nhẹ nhàng riêng cho trái tim khi hover */
+.header-wishlist:hover .purple-icon {
+  color: #ff85b2 !important; 
+}
+
+/* Huy hiệu số lượng (Badge) màu hồng pastel đặc trưng cho Danh sách yêu thích */
+.cart-badge.pink-badge {
+  background: #ff85b2 !important;
+  box-shadow: 0 2px 6px rgba(255, 133, 178, 0.4);
+}
+
+/* 3. Style riêng cho khu vực Icon Đặt lịch trước mới */
+.header-booking {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Hiệu ứng chuyển màu khi hover vào nút đặt lịch */
+.header-booking:hover .purple-icon {
+  color: #bca0dc !important;
+}
+
+/* 4. Tối ưu hóa hiển thị nhãn chữ (Labels) bên dưới các icon mới */
+.action-item .action-label {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+  color: var(--text);
+  white-space: nowrap; /* Giữ chữ nằm trên một hàng, không bị xuống dòng bừa bãi */
+}
+
+/* Hiệu ứng đổi màu chữ đồng bộ khi di chuột vào khối icon */
+.header-wishlist:hover .action-label {
+  color: #ff85b2;
+}
+
+.header-booking:hover .action-label {
+  color: #8e74ad;
+}

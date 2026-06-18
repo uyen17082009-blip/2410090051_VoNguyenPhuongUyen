@@ -1,0 +1,65 @@
+.signup-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.signup-card {
+    background-color: #f5ecef; /* Màu hồng nhạt trong hình */
+    border: 1px solid #dcdcdc;
+    padding: 30px;
+    width: 400px;
+}
+
+.signup-title {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+.btn-register {
+    width: 100%;
+    padding: 10px;
+    background-color: #9c6677; /* Màu tím hồng của nút */
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.or-text {
+    text-align: center;
+    margin: 15px 0;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    background: white;
+    border: 1px solid #000;
+    cursor: pointer;
+    text-align: center;
+}
+
+.footer-link {
+    text-align: center;
+    margin-top: 15px;
+}

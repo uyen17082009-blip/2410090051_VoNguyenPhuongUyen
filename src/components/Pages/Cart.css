@@ -1,0 +1,440 @@
+.cart-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #4A4A4A;
+}
+
+.cart-title {
+    font-size: 28px;
+    color: #6D597A;
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.cart-content {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 30px;
+    align-items: flex-start;
+}
+
+.cart-grid-layout {
+    display: grid;
+    grid-template-columns: 2.8fr 1.5fr 1.5fr 1.2fr 40px;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-header-labels {
+    padding: 0 25px 15px 25px;
+    border-bottom: 1px solid #E6D7ED;
+    margin-bottom: 15px;
+    color: #957DAD;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.label-size,
+.label-quantity { 
+    text-align: center; 
+}
+
+.label-total { 
+    text-align: right; 
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.cart-item {
+    background: #FDFBFF;
+    border: 1px solid #D9BCE8;
+    border-radius: 20px;
+    padding: 15px 25px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cart-item:hover {
+    box-shadow: 0 5px 15px rgba(149, 125, 173, 0.1);
+}
+
+.product-info-col {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-image {
+    width: 70px;
+    height: 70px;
+    background: #F3EEF5;
+    border-radius: 12px;
+    padding: 5px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.cart-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cart-item-info {
+    flex: 1;
+}
+
+.cart-item-name {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #333;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: #B5838D;
+}
+
+.original-price-tag {
+    text-decoration: line-through;
+    color: #BDBDBD;
+    font-size: 12px;
+    margin-left: 8px;
+}
+
+/* ======================================================= */
+/* CODE CSS CHO DROPDOWN CUSTOM - ĐẸP TUYỆT ĐỐI */
+/* ======================================================= */
+.cart-item-size-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-dropdown {
+    position: relative;
+    width: 110px; /* Bằng chiều rộng với thanh số lượng */
+    font-family: inherit;
+}
+
+/* Ô hiển thị chính */
+.dropdown-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 16px;
+    background: #F3EEF5; /* Màu nền đồng bộ hoàn toàn ô số lượng */
+    border-radius: 25px; /* Bo tròn viên thuốc mượt mà */
+    color: #4A4A4A;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+}
+
+.dropdown-arrow {
+    font-size: 8px;
+    color: #957DAD;
+    position: absolute;
+    right: 16px;
+    transition: transform 0.2s ease;
+}
+
+/* Khi dropdown đang mở thì mũi tên xoay ngược lại */
+.dropdown-selected.active .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Khung danh sách tùy chọn xổ xuống */
+.dropdown-options {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: #FDFBFF;
+    border: 1px solid #D9BCE8;
+    border-radius: 15px; /* Bo tròn khung danh sách cực xinh */
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    z-index: 10;
+    box-shadow: 0 10px 25px rgba(149, 125, 173, 0.15); /* Đổ bóng mịn màng */
+    overflow: hidden;
+}
+
+/* Từng dòng option bên trong */
+.dropdown-option-item {
+    padding: 10px 14px;
+    font-size: 14px;
+    color: #4A4A4A;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+/* Hiệu ứng di chuột vào option: đổi sang xám hồng nhạt pastel */
+.dropdown-option-item:hover {
+    background: #F3EEF5;
+    color: #6D597A;
+}
+
+/* Style cho option đang được chọn sẵn */
+.dropdown-option-item.selected {
+    background: #E6D7ED;
+    color: #6D597A;
+}
+
+.no-size-dash {
+    font-size: 14px;
+    color: #C0C0C0;
+}
+/* ======================================================= */
+
+/* THANH SỐ LƯỢNG & CÁC PHẦN CÒN LẠI */
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F3EEF5;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 110px;
+    margin: 0 auto;
+}
+
+.quantity-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #957DAD;
+    cursor: pointer;
+    width: 30px;
+}
+
+.quantity-value {
+    font-weight: 700;
+    min-width: 25px;
+    text-align: center;
+}
+
+.cart-item-total {
+    text-align: right;
+}
+
+.item-total-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #957DAD;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #C0C0C0;
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.remove-item-btn:hover {
+    color: #B5838D;
+}
+
+.cart-summary {
+    background: #FDFBFF;
+    border: 1px solid #D9BCE8;
+    border-radius: 20px;
+    padding: 25px;
+    position: sticky;
+    top: 20px;
+}
+
+.summary-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #6D597A;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.summary-row.dis {
+    color: #FF8FB1; 
+    font-weight: 500;
+    padding: 0;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.coupon-section {
+    display: flex;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.coupon-input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #D9BCE8;
+    border-radius: 8px;
+    font-size: 13px;
+    outline: none;
+}
+
+.coupon-apply-btn {
+    background: #F3EEF5;
+    border: 1px solid #D9BCE8;
+    color: #6D597A;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.coupon-apply-btn:hover{
+    background: #6D597A;
+    color: #F3EEF5;
+    border: none;
+}
+
+.summary-divider {
+    height: 1px;
+    background: #E6D7ED;
+    margin: 15px 0;
+}
+
+.summary-row.total {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.total-price {
+    color: #957DAD;
+    font-size: 22px;
+}
+
+.checkout-btn {
+    width: 100%;
+    background: #957DAD;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.continue-shopping-btn.outline {
+    width: 100%;
+    background: none;
+    border: 1px solid #957DAD;
+    color: #957DAD;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cart-empty-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.cart-empty-card {
+    background: #ffffff;
+    border: 1px solid #E6D7ED;
+    border-radius: 30px;
+    padding: 50px;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(149, 125, 173, 0.05);
+}
+
+.empty-illustration {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #F3EEF5;
+    border-radius: 50%;
+}
+
+.cart-icon-animated {
+    font-size: 60px;
+    z-index: 1;
+}
+
+.empty-title {
+    color: #6D597A;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.empty-description {
+    color: #8E9AAF;
+    line-height: 1.6;
+    font-size: 15px;
+    margin-bottom: 35px;
+}
+
+.back-to-shop-btn {
+    background: #957DAD;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(149, 125, 173, 0.3);
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.back-to-shop-btn:hover {
+    background: #6D597A;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(109, 89, 122, 0.4);
+}
+
+@media (max-width: 900px) {
+    .cart-content { grid-template-columns: 1fr; }
+    .cart-header-labels { display: none; }
+    .cart-grid-layout { 
+        grid-template-columns: 1fr; 
+        text-align: center;
+        gap: 20px;
+    }
+    .product-info-col { flex-direction: column; }
+    .cart-item-size-col { margin: 5px 0; }
+    .custom-dropdown { max-width: 200px; width: 100%; }
+    .cart-item-total { text-align: center; }
+}
