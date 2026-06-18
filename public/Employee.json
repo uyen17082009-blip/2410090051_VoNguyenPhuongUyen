@@ -2,6 +2,8 @@
   {
     "id": "NV001",
     "name": "Nguyễn Minh Tuấn",
+    "gender": "Nam",
+    "birthdate": "1990-05-14",
     "phone": "0901234567",
     "email": "minhtuannv@vlxd.com",
     "role": "Quản lý",
@@ -11,6 +13,8 @@
   {
     "id": "NV002",
     "name": "Trần Thị Lan",
+    "gender": "Nữ",
+    "birthdate": "1993-08-22",
     "phone": "0912345678",
     "email": "lantt@vlxd.com",
     "role": "Thu ngân",
@@ -20,6 +24,8 @@
   {
     "id": "NV003",
     "name": "Lê Văn Hùng",
+    "gender": "Nam",
+    "birthdate": "1995-11-02",
     "phone": "0923456789",
     "email": "hunglv@vlxd.com",
     "role": "Nhân viên bán hàng",
@@ -29,6 +35,8 @@
   {
     "id": "NV004",
     "name": "Phạm Thị Hoa",
+    "gender": "Nữ",
+    "birthdate": "1997-04-19",
     "phone": "0934567890",
     "email": "hoapt@vlxd.com",
     "role": "Nhân viên bán hàng",
@@ -38,6 +46,8 @@
   {
     "id": "NV005",
     "name": "Hoàng Đức Nam",
+    "gender": "Nam",
+    "birthdate": "1994-09-30",
     "phone": "0945678901",
     "email": "namhd@vlxd.com",
     "role": "Nhân viên kho",
@@ -47,6 +57,8 @@
   {
     "id": "NV006",
     "name": "Vũ Thị Ngọc",
+    "gender": "Nữ",
+    "birthdate": "1991-12-05",
     "phone": "0956789012",
     "email": "ngocvt@vlxd.com",
     "role": "Kế toán",
@@ -56,6 +68,8 @@
   {
     "id": "NV007",
     "name": "Đặng Văn Khoa",
+    "gender": "Nam",
+    "birthdate": "1996-02-27",
     "phone": "0967890123",
     "email": "khadv@vlxd.com",
     "role": "Nhân viên bán hàng",
@@ -65,6 +79,8 @@
   {
     "id": "NV008",
     "name": "Bùi Thị Thanh",
+    "gender": "Nữ",
+    "birthdate": "1998-07-15",
     "phone": "0978901234",
     "email": "thanhbt@vlxd.com",
     "role": "Nhân viên giao hàng",
@@ -74,6 +90,8 @@
   {
     "id": "NV009",
     "name": "Hồ Minh Long",
+    "gender": "Nam",
+    "birthdate": "1992-03-10",
     "phone": "0989012345",
     "email": "longmh@vlxd.com",
     "role": "Nhân viên kho",
@@ -83,6 +101,8 @@
   {
     "id": "NV010",
     "name": "Ngô Thị Phương",
+    "gender": "Nữ",
+    "birthdate": "1999-10-24",
     "phone": "0990123456",
     "email": "phuongnt@vlxd.com",
     "role": "Nhân viên bán hàng",
