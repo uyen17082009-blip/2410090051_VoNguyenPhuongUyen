@@ -5,29 +5,68 @@ import './Admin.css';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
 
-const emptyForm = () => ({ 
-  id: '', 
-  name: '' 
+const emptyForm = () => ({
+  id: '',
+  name: '',
+  imageKey: 'sp1',
+  sizeS: 'S',
+  sizeM: 'M',
+  sizeL: 'L',
+  currentPrice: '',
+  originalPrice: '',
+  discount: '',
+  rating: '',
+  sold: '',
+  categoryid: '',
 });
 
-function rowToForm(c) {
-  return { 
-    id: String(c.id), 
-    name: c.name ?? '' 
-  };
-}
-
-function formToRow(form, nextId) {
+function productToForm(p) {
   return {
-    id: form.id ? Number(form.id) : nextId,
-    name: form.name.trim(),
+    id: String(p.id),
+    name: p.name ?? '',
+    imageKey: p.imageKey ?? '',
+    sizeS: p.sizeS ?? 'S',
+    sizeM: p.sizeM ?? 'M',
+    sizeL: p.sizeL ?? 'L',
+    currentPrice: p.currentPrice !== null ? String(p.currentPrice) : '',
+    originalPrice: p.originalPrice !== null ? String(p.originalPrice) : '',
+    discount: p.discount !== null ? String(p.discount) : '',
+    rating: p.rating !== null ? String(p.rating) : '',
+    sold: p.sold !== null ? String(p.sold) : '',
+    categoryid: p.categoryid !== null ? String(p.categoryid) : '',
   };
 }
 
-function AdminCategory({ embedded = false }) {
+function formToProduct(form, nextId) {
+  const id = form.id ? Number(form.id) : nextId;
+  return {
+    id,
+    name: form.name.trim(),
+    imageKey: form.imageKey.trim() || 'sp1',
+    sizeS: form.sizeS.trim() || 'S',
+    sizeM: form.sizeM.trim() || 'M',
+    sizeL: form.sizeL.trim() || 'L',
+    currentPrice: Number(form.currentPrice) || 0,
+    originalPrice: Number(form.originalPrice) || 0,
+    discount: form.discount.trim(),
+    rating: Number(form.rating) || 0,
+    sold: Number(form.sold) || 0,
+    categoryid: Number(form.categoryid) || 0,
+  };
+}
+
+function validateProduct(built) {
+  if (!built.name) return 'Vui lòng nhập tên sản phẩm';
+  if (!Number.isFinite(built.currentPrice)) return 'Giá hiện tại phải là số';
+  if (!Number.isFinite(built.originalPrice)) return 'Giá gốc phải là số';
+  if (!Number.isFinite(built.categoryid)) return 'Mã danh mục phải là số';
+  return null;
+}
+
+function AdminProduct({ embedded = false }) {
   const navigate = useNavigate();
   const [allowed, setAllowed] = useState(embedded);
-  const [rows, setRows] = useState([]);
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [saveError, setSaveError] = useState('');
@@ -38,20 +77,20 @@ function AdminCategory({ embedded = false }) {
   const [searchIdInput, setSearchIdInput] = useState('');
   const [appliedSearchId, setAppliedSearchId] = useState('');
 
-  const displayedRows = useMemo(() => {
+  const displayedProducts = useMemo(() => {
     const q = appliedSearchId.trim();
-    if (!q) return rows;
-    return rows.filter((r) => String(r.id) === q);
-  }, [rows, appliedSearchId]);
+    if (!q) return products;
+    return products.filter((p) => String(p.id) === q);
+  }, [products, appliedSearchId]);
 
   const persist = useCallback(async (nextList) => {
     setSaving(true);
     setSaveError('');
     try {
-      await axios.put('/api/category', nextList, {
+      await axios.put('/api/product', nextList, {
         headers: { 'Content-Type': 'application/json' },
       });
-      setRows(nextList);
+      setProducts(nextList);
       setView('list');
       setForm(emptyForm());
       setIsNew(false);
@@ -96,10 +135,10 @@ function AdminCategory({ embedded = false }) {
       setLoading(true);
       setLoadError('');
       try {
-        const res = await fetch(`${jsonBase}category.json`);
-        if (!res.ok) throw new Error('Không tải được category.json');
+        const res = await fetch(`${jsonBase}product.json`);
+        if (!res.ok) throw new Error('Không tải được products.json');
         const data = await res.json();
-        setRows(Array.isArray(data) ? data : []);
+        setProducts(Array.isArray(data) ? data : []);
       } catch (e) {
         setLoadError(e.message || 'Lỗi tải dữ liệu');
       } finally {
@@ -123,9 +162,9 @@ function AdminCategory({ embedded = false }) {
     setSaveError('');
   };
 
-  const openEdit = (c) => {
+  const openEdit = (p) => {
     setIsNew(false);
-    setForm(rowToForm(c));
+    setForm(productToForm(p));
     setView('form');
     setSaveError('');
   };
@@ -143,30 +182,31 @@ function AdminCategory({ embedded = false }) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    if (!form.name.trim()) {
-      setSaveError('Vui lòng nhập tên danh mục');
+    const nextId = products.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0) + 1;
+    const built = formToProduct(form, nextId);
+    const invalid = validateProduct(built);
+    if (invalid) {
+      setSaveError(invalid);
       return;
     }
-    const nextId = rows.reduce((m, r) => Math.max(m, Number(r.id) || 0), 0) + 1;
-    const built = formToRow(form, nextId);
-    
+
     let nextList;
     if (isNew) {
-      nextList = [...rows, built];
+      nextList = [...products, built];
     } else {
-      const idx = rows.findIndex((r) => String(r.id) === String(form.id));
+      const idx = products.findIndex((p) => String(p.id) === String(form.id));
       if (idx === -1) {
-        setSaveError('Không tìm thấy bản ghi để cập nhật');
+        setSaveError('Không tìm thấy sản phẩm để cập nhật');
         return;
       }
-      nextList = rows.map((r) => (String(r.id) === String(form.id) ? built : r));
+      nextList = products.map((p) => (String(p.id) === String(form.id) ? built : p));
     }
     persist(nextList);
   };
 
   const handleDelete = (id) => {
-    if (!window.confirm('Xóa danh mục này?')) return;
-    persist(rows.filter((r) => String(r.id) !== String(id)));
+    if (!window.confirm('Xóa sản phẩm này?')) return;
+    persist(products.filter((p) => String(p.id) !== String(id)));
   };
 
   const applyIdSearch = () => setAppliedSearchId(searchIdInput.trim());
@@ -179,19 +219,18 @@ function AdminCategory({ embedded = false }) {
     <div className="admin-row">
       {loadError && <div className="admin-msg admin-msg--error">{loadError}</div>}
       {saveError && <div className="admin-msg admin-msg--error">{saveError}</div>}
-      
       {loading ? (
         <p>Đang tải...</p>
       ) : view === 'list' ? (
         <>
           <div className="admin-toolbar admin-toolbar--row">
             <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
-              + Thêm danh mục
+              + Thêm sản phẩm
             </button>
             <div className="admin-toolbar-search">
-              <label htmlFor="admin-category-search-id">Tìm kiếm: </label>
+              <label htmlFor="admin-product-search-id">Tìm kiếm: </label>
               <input
-                id="admin-category-search-id"
+                id="admin-product-search-id"
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
@@ -220,29 +259,37 @@ function AdminCategory({ embedded = false }) {
                 <tr>
                   <th>ID</th>
                   <th>Tên</th>
+                  <th>Ảnh (key)</th>
+                  <th>Giá gốc</th>
+                  <th>Giá hiện tại</th>
+                  <th>Danh mục</th>
                   <th />
                 </tr>
               </thead>
               <tbody>
-                {displayedRows.length === 0 ? (
+                {displayedProducts.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="admin-table_empty">
+                    <td colSpan={7} className="admin-table_empty">
                       {appliedSearchId.trim()
-                        ? `Không có danh mục với ID "${appliedSearchId.trim()}".`
-                        : 'Chưa có danh mục.'}
+                        ? `Không có sản phẩm với ID "${appliedSearchId.trim()}".`
+                        : 'Chưa có sản phẩm.'}
                     </td>
                   </tr>
                 ) : (
-                  displayedRows.map((r) => (
-                    <tr key={r.id}>
-                      <td>{r.id}</td>
-                      <td>{r.name}</td>
+                  displayedProducts.map((p) => (
+                    <tr key={p.id}>
+                      <td>{p.id}</td>
+                      <td>{p.name}</td>
+                      <td>{p.imageKey}</td>
+                      <td>{p.originalPrice}</td>
+                      <td>{p.currentPrice}</td>
+                      <td>{p.categoryid}</td>
                       <td>
                         <div className="admin-table_actions">
                           <button
                             type="button"
                             className="admin-table_link"
-                            onClick={() => openEdit(r)}
+                            onClick={() => openEdit(p)}
                             disabled={saving}
                           >
                             Sửa
@@ -250,7 +297,7 @@ function AdminCategory({ embedded = false }) {
                           <button
                             type="button"
                             className="admin-table_link admin-table_link--danger"
-                            onClick={() => handleDelete(r.id)}
+                            onClick={() => handleDelete(p.id)}
                             disabled={saving}
                           >
                             Xóa
@@ -266,7 +313,7 @@ function AdminCategory({ embedded = false }) {
         </>
       ) : (
         <form className="admin-form-card" onSubmit={handleSubmitForm}>
-          <h2>{isNew ? 'Thêm danh mục' : 'Sửa danh mục'}</h2>
+          <h2>{isNew ? 'Thêm sản phẩm' : 'Sửa sản phẩm'}</h2>
           <div className="admin-form-grid">
             {!isNew && (
               <label>
@@ -275,7 +322,7 @@ function AdminCategory({ embedded = false }) {
               </label>
             )}
             <label className="admin-form-grid_full">
-              Tên
+              Tên sản phẩm
               <input
                 type="text"
                 value={form.name}
@@ -283,17 +330,96 @@ function AdminCategory({ embedded = false }) {
                 required
               />
             </label>
+            <label>
+              Mã ảnh (imageKey)
+              <input
+                type="text"
+                value={form.imageKey}
+                onChange={(e) => handleFormChange('imageKey', e.target.value)}
+              />
+            </label>
+            <label>
+              Mã danh mục (categoryid)
+              <input
+                type="number"
+                value={form.categoryid}
+                onChange={(e) => handleFormChange('categoryid', e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Giá gốc
+              <input
+                type="number"
+                value={form.originalPrice}
+                onChange={(e) => handleFormChange('originalPrice', e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Giá hiện tại
+              <input
+                type="number"
+                value={form.currentPrice}
+                onChange={(e) => handleFormChange('currentPrice', e.target.value)}
+                required
+              />
+            </label>
+            <label>
+              Giảm giá (Ví dụ: -20%)
+              <input
+                type="text"
+                value={form.discount}
+                onChange={(e) => handleFormChange('discount', e.target.value)}
+              />
+            </label>
+            <label>
+              Đánh giá (Rating)
+              <input
+                type="number"
+                step="0.1"
+                value={form.rating}
+                onChange={(e) => handleFormChange('rating', e.target.value)}
+              />
+            </label>
+            <label>
+              Đã bán (Sold)
+              <input
+                type="number"
+                value={form.sold}
+                onChange={(e) => handleFormChange('sold', e.target.value)}
+              />
+            </label>
+            <label>
+              Size S
+              <input
+                type="text"
+                value={form.sizeS}
+                onChange={(e) => handleFormChange('sizeS', e.target.value)}
+              />
+            </label>
+            <label>
+              Size M
+              <input
+                type="text"
+                value={form.sizeM}
+                onChange={(e) => handleFormChange('sizeM', e.target.value)}
+              />
+            </label>
+            <label>
+              Size L
+              <input
+                type="text"
+                value={form.sizeL}
+                onChange={(e) => handleFormChange('sizeL', e.target.value)}
+              />
+            </label>
           </div>
           <div className="admin-form-actions">
             <button type="submit" className="admin-btn" disabled={saving}>
               {saving ? 'Đang lưu...' : 'Lưu'}
             </button>
-            <button
-              type="button"
-              className="admin-btn admin-btn--ghost"
-              onClick={cancelForm}
-              disabled={saving}
-            >
+            <button type="button" className="admin-btn admin-btn--ghost" onClick={cancelForm} disabled={saving}>
               Hủy
             </button>
           </div>
@@ -302,7 +428,7 @@ function AdminCategory({ embedded = false }) {
     </div>
   );
 
-  return allowed ? <div className="admin-category-container">{bodyContent}</div> : null;
+  return allowed ? <div className="admin-product-container">{bodyContent}</div> : null;
 }
 
-export default AdminCategory;
+export default AdminProduct;
