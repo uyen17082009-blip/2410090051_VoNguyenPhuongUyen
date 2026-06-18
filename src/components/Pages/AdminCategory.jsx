@@ -44,48 +44,52 @@ function AdminCategory({ embedded = false }) {
     return rows.filter((r) => String(r.id) === q);
   }, [rows, appliedSearchId]);
 
-const persist = useCallback((nextList) => {
+  const persist = useCallback(async (nextList) => {
     setSaving(true);
     setSaveError('');
-    
-    // Lưu vào LocalStorage thay vì gọi API
-    localStorage.setItem('category_data', JSON.stringify(nextList));
-    
-    // Cập nhật state
-    setRows(nextList);
-    setView('list');
-    setForm(emptyForm());
-    setIsNew(false);
-    setSaving(false);
+    try {
+      await axios.put('/api/category', nextList, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      setRows(nextList);
+      setView('list');
+      setForm(emptyForm());
+      setIsNew(false);
+    } catch (err) {
+      const msg =
+        err.response?.data?.error ||
+        (err.code === 'ERR_NETWORK' || err.response?.status === 404
+          ? 'Chỉ lưu được khi chạy npm run dev hoặc npm run preview (API Vite).'
+          : null) ||
+        'Không lưu được dữ liệu.';
+      setSaveError(msg);
+    } finally {
+      setSaving(false);
+    }
   }, []);
-useEffect(() => {
-    if (!allowed) return;
-    
-    const load = () => {
-      setLoading(true);
-      setLoadError('');
-      
-      const saved = localStorage.getItem('category_data');
-      if (saved) {
-        setRows(JSON.parse(saved));
-        setLoading(false);
-      } else {
-        fetch(`${jsonBase}category.json`)
-          .then(res => {
-            if (!res.ok) throw new Error('Không tải được category.json');
-            return res.json();
-          })
-          .then(data => {
-            const arr = Array.isArray(data) ? data : [];
-            setRows(arr);
-            localStorage.setItem('category_data', JSON.stringify(arr));
-          })
-          .catch(e => setLoadError(e.message || 'Lỗi tải dữ liệu'))
-          .finally(() => setLoading(false));
+
+  useEffect(() => {
+    if (embedded) {
+      setAllowed(true);
+      return;
+    }
+    const raw = localStorage.getItem('currentUser');
+    if (!raw) {
+      navigate('/login');
+      return;
+    }
+    try {
+      const u = JSON.parse(raw);
+      if (u.role !== 'staff') {
+        navigate('/');
+        return;
       }
-    };
-    load();
-  }, [allowed]);
+      setAllowed(true);
+    } catch {
+      navigate('/login');
+    }
+  }, [navigate, embedded]);
+
   useEffect(() => {
     if (!allowed) return;
     const load = async () => {
