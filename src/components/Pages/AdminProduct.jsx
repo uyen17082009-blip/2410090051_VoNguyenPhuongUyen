@@ -5,68 +5,29 @@ import './Admin.css';
 
 const jsonBase = import.meta.env.BASE_URL || '/';
 
-const emptyForm = () => ({
-  id: '',
-  name: '',
-  imageKey: 'sp1',
-  sizeS: 'S',
-  sizeM: 'M',
-  sizeL: 'L',
-  currentPrice: '',
-  originalPrice: '',
-  discount: '',
-  rating: '',
-  sold: '',
-  categoryid: '',
+const emptyForm = () => ({ 
+  id: '', 
+  name: '' 
 });
 
-function productToForm(p) {
-  return {
-    id: String(p.id),
-    name: p.name ?? '',
-    imageKey: p.imageKey ?? '',
-    sizeS: p.sizeS ?? 'S',
-    sizeM: p.sizeM ?? 'M',
-    sizeL: p.sizeL ?? 'L',
-    currentPrice: p.currentPrice !== null ? String(p.currentPrice) : '',
-    originalPrice: p.originalPrice !== null ? String(p.originalPrice) : '',
-    discount: p.discount !== null ? String(p.discount) : '',
-    rating: p.rating !== null ? String(p.rating) : '',
-    sold: p.sold !== null ? String(p.sold) : '',
-    categoryid: p.categoryid !== null ? String(p.categoryid) : '',
+function rowToForm(c) {
+  return { 
+    id: String(c.id), 
+    name: c.name ?? '' 
   };
 }
 
-function formToProduct(form, nextId) {
-  const id = form.id ? Number(form.id) : nextId;
+function formToRow(form, nextId) {
   return {
-    id,
+    id: form.id ? Number(form.id) : nextId,
     name: form.name.trim(),
-    imageKey: form.imageKey.trim() || 'sp1',
-    sizeS: form.sizeS.trim() || 'S',
-    sizeM: form.sizeM.trim() || 'M',
-    sizeL: form.sizeL.trim() || 'L',
-    currentPrice: Number(form.currentPrice) || 0,
-    originalPrice: Number(form.originalPrice) || 0,
-    discount: form.discount.trim(),
-    rating: Number(form.rating) || 0,
-    sold: Number(form.sold) || 0,
-    categoryid: Number(form.categoryid) || 0,
   };
 }
 
-function validateProduct(built) {
-  if (!built.name) return 'Vui lòng nhập tên sản phẩm';
-  if (!Number.isFinite(built.currentPrice)) return 'Giá hiện tại phải là số';
-  if (!Number.isFinite(built.originalPrice)) return 'Giá gốc phải là số';
-  if (!Number.isFinite(built.categoryid)) return 'Mã danh mục phải là số';
-  return null;
-}
-
-function AdminProduct({ embedded = false }) {
+function AdminCategory({ embedded = false }) {
   const navigate = useNavigate();
   const [allowed, setAllowed] = useState(embedded);
-  const [products, setProducts] = useState([]);
+  const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState('');
   const [saveError, setSaveError] = useState('');
@@ -77,57 +38,68 @@ function AdminProduct({ embedded = false }) {
   const [searchIdInput, setSearchIdInput] = useState('');
   const [appliedSearchId, setAppliedSearchId] = useState('');
 
-  const displayedProducts = useMemo(() => {
+  const displayedRows = useMemo(() => {
     const q = appliedSearchId.trim();
-    if (!q) return products;
-    return products.filter((p) => String(p.id) === q);
-  }, [products, appliedSearchId]);
+    if (!q) return rows;
+    return rows.filter((r) => String(r.id) === q);
+  }, [rows, appliedSearchId]);
 
-const persist = useCallback((nextList) => {
-  setSaving(true);
-  setSaveError('');
-  
-  setProducts(nextList);
-  localStorage.setItem('products_data', JSON.stringify(nextList));
-  
-  setView('list');
-  setForm(emptyForm());
-  setIsNew(false);
-  setSaving(false);
-}, []);
-
-useEffect(() => {
-  if (!allowed) return;
-  const load = () => {
-    setLoading(true);
-    setLoadError('');
-    const saved = localStorage.getItem('products_data');
-    if (saved) {
-      setProducts(JSON.parse(saved));
-      setLoading(false);
-    } else {
-      fetch(`${jsonBase}product.json`)
-        .then(res => res.json())
-        .then(data => {
-          setProducts(Array.isArray(data) ? data : []);
-          localStorage.setItem('products_data', JSON.stringify(data));
-        })
-        .catch(() => setLoadError('Lỗi tải dữ liệu'))
-        .finally(() => setLoading(false));
+  const persist = useCallback(async (nextList) => {
+    setSaving(true);
+    setSaveError('');
+    try {
+      await axios.put('/api/category', nextList, {
+        headers: { 'Content-Type': 'application/json' },
+      });
+      setRows(nextList);
+      setView('list');
+      setForm(emptyForm());
+      setIsNew(false);
+    } catch (err) {
+      const msg =
+        err.response?.data?.error ||
+        (err.code === 'ERR_NETWORK' || err.response?.status === 404
+          ? 'Chỉ lưu được khi chạy npm run dev hoặc npm run preview (API Vite).'
+          : null) ||
+        'Không lưu được dữ liệu.';
+      setSaveError(msg);
+    } finally {
+      setSaving(false);
     }
-  };
-  load();
-}, [allowed]);
+  }, []);
+
+  useEffect(() => {
+    if (embedded) {
+      setAllowed(true);
+      return;
+    }
+    const raw = localStorage.getItem('currentUser');
+    if (!raw) {
+      navigate('/login');
+      return;
+    }
+    try {
+      const u = JSON.parse(raw);
+      if (u.role !== 'staff') {
+        navigate('/');
+        return;
+      }
+      setAllowed(true);
+    } catch {
+      navigate('/login');
+    }
+  }, [navigate, embedded]);
+
   useEffect(() => {
     if (!allowed) return;
     const load = async () => {
       setLoading(true);
       setLoadError('');
       try {
-        const res = await fetch(`${jsonBase}product.json`);
-        if (!res.ok) throw new Error('Không tải được products.json');
+        const res = await fetch(`${jsonBase}category.json`);
+        if (!res.ok) throw new Error('Không tải được category.json');
         const data = await res.json();
-        setProducts(Array.isArray(data) ? data : []);
+        setRows(Array.isArray(data) ? data : []);
       } catch (e) {
         setLoadError(e.message || 'Lỗi tải dữ liệu');
       } finally {
@@ -151,9 +123,9 @@ useEffect(() => {
     setSaveError('');
   };
 
-  const openEdit = (p) => {
+  const openEdit = (c) => {
     setIsNew(false);
-    setForm(productToForm(p));
+    setForm(rowToForm(c));
     setView('form');
     setSaveError('');
   };
@@ -171,31 +143,30 @@ useEffect(() => {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    const nextId = products.reduce((m, p) => Math.max(m, Number(p.id) || 0), 0) + 1;
-    const built = formToProduct(form, nextId);
-    const invalid = validateProduct(built);
-    if (invalid) {
-      setSaveError(invalid);
+    if (!form.name.trim()) {
+      setSaveError('Vui lòng nhập tên danh mục');
       return;
     }
-
+    const nextId = rows.reduce((m, r) => Math.max(m, Number(r.id) || 0), 0) + 1;
+    const built = formToRow(form, nextId);
+    
     let nextList;
     if (isNew) {
-      nextList = [...products, built];
+      nextList = [...rows, built];
     } else {
-      const idx = products.findIndex((p) => String(p.id) === String(form.id));
+      const idx = rows.findIndex((r) => String(r.id) === String(form.id));
       if (idx === -1) {
-        setSaveError('Không tìm thấy sản phẩm để cập nhật');
+        setSaveError('Không tìm thấy bản ghi để cập nhật');
         return;
       }
-      nextList = products.map((p) => (String(p.id) === String(form.id) ? built : p));
+      nextList = rows.map((r) => (String(r.id) === String(form.id) ? built : r));
     }
     persist(nextList);
   };
 
   const handleDelete = (id) => {
-    if (!window.confirm('Xóa sản phẩm này?')) return;
-    persist(products.filter((p) => String(p.id) !== String(id)));
+    if (!window.confirm('Xóa danh mục này?')) return;
+    persist(rows.filter((r) => String(r.id) !== String(id)));
   };
 
   const applyIdSearch = () => setAppliedSearchId(searchIdInput.trim());
@@ -208,18 +179,19 @@ useEffect(() => {
     <div className="admin-row">
       {loadError && <div className="admin-msg admin-msg--error">{loadError}</div>}
       {saveError && <div className="admin-msg admin-msg--error">{saveError}</div>}
+      
       {loading ? (
         <p>Đang tải...</p>
       ) : view === 'list' ? (
         <>
           <div className="admin-toolbar admin-toolbar--row">
             <button type="button" className="admin-btn" onClick={openCreate} disabled={saving}>
-              + Thêm sản phẩm
+              + Thêm danh mục
             </button>
             <div className="admin-toolbar-search">
-              <label htmlFor="admin-product-search-id">Tìm kiếm: </label>
+              <label htmlFor="admin-category-search-id">Tìm kiếm: </label>
               <input
-                id="admin-product-search-id"
+                id="admin-category-search-id"
                 type="text"
                 inputMode="numeric"
                 value={searchIdInput}
@@ -248,37 +220,29 @@ useEffect(() => {
                 <tr>
                   <th>ID</th>
                   <th>Tên</th>
-                  <th>Ảnh (key)</th>
-                  <th>Giá gốc</th>
-                  <th>Giá hiện tại</th>
-                  <th>Danh mục</th>
                   <th />
                 </tr>
               </thead>
               <tbody>
-                {displayedProducts.length === 0 ? (
+                {displayedRows.length === 0 ? (
                   <tr>
-                    <td colSpan={7} className="admin-table_empty">
+                    <td colSpan={3} className="admin-table_empty">
                       {appliedSearchId.trim()
-                        ? `Không có sản phẩm với ID "${appliedSearchId.trim()}".`
-                        : 'Chưa có sản phẩm.'}
+                        ? `Không có danh mục với ID "${appliedSearchId.trim()}".`
+                        : 'Chưa có danh mục.'}
                     </td>
                   </tr>
                 ) : (
-                  displayedProducts.map((p) => (
-                    <tr key={p.id}>
-                      <td>{p.id}</td>
-                      <td>{p.name}</td>
-                      <td>{p.imageKey}</td>
-                      <td>{p.originalPrice}</td>
-                      <td>{p.currentPrice}</td>
-                      <td>{p.categoryid}</td>
+                  displayedRows.map((r) => (
+                    <tr key={r.id}>
+                      <td>{r.id}</td>
+                      <td>{r.name}</td>
                       <td>
                         <div className="admin-table_actions">
                           <button
                             type="button"
                             className="admin-table_link"
-                            onClick={() => openEdit(p)}
+                            onClick={() => openEdit(r)}
                             disabled={saving}
                           >
                             Sửa
@@ -286,7 +250,7 @@ useEffect(() => {
                           <button
                             type="button"
                             className="admin-table_link admin-table_link--danger"
-                            onClick={() => handleDelete(p.id)}
+                            onClick={() => handleDelete(r.id)}
                             disabled={saving}
                           >
                             Xóa
@@ -302,7 +266,7 @@ useEffect(() => {
         </>
       ) : (
         <form className="admin-form-card" onSubmit={handleSubmitForm}>
-          <h2>{isNew ? 'Thêm sản phẩm' : 'Sửa sản phẩm'}</h2>
+          <h2>{isNew ? 'Thêm danh mục' : 'Sửa danh mục'}</h2>
           <div className="admin-form-grid">
             {!isNew && (
               <label>
@@ -311,7 +275,7 @@ useEffect(() => {
               </label>
             )}
             <label className="admin-form-grid_full">
-              Tên sản phẩm
+              Tên
               <input
                 type="text"
                 value={form.name}
@@ -319,96 +283,17 @@ useEffect(() => {
                 required
               />
             </label>
-            <label>
-              Mã ảnh (imageKey)
-              <input
-                type="text"
-                value={form.imageKey}
-                onChange={(e) => handleFormChange('imageKey', e.target.value)}
-              />
-            </label>
-            <label>
-              Mã danh mục (categoryid)
-              <input
-                type="number"
-                value={form.categoryid}
-                onChange={(e) => handleFormChange('categoryid', e.target.value)}
-                required
-              />
-            </label>
-            <label>
-              Giá gốc
-              <input
-                type="number"
-                value={form.originalPrice}
-                onChange={(e) => handleFormChange('originalPrice', e.target.value)}
-                required
-              />
-            </label>
-            <label>
-              Giá hiện tại
-              <input
-                type="number"
-                value={form.currentPrice}
-                onChange={(e) => handleFormChange('currentPrice', e.target.value)}
-                required
-              />
-            </label>
-            <label>
-              Giảm giá (Ví dụ: -20%)
-              <input
-                type="text"
-                value={form.discount}
-                onChange={(e) => handleFormChange('discount', e.target.value)}
-              />
-            </label>
-            <label>
-              Đánh giá (Rating)
-              <input
-                type="number"
-                step="0.1"
-                value={form.rating}
-                onChange={(e) => handleFormChange('rating', e.target.value)}
-              />
-            </label>
-            <label>
-              Đã bán (Sold)
-              <input
-                type="number"
-                value={form.sold}
-                onChange={(e) => handleFormChange('sold', e.target.value)}
-              />
-            </label>
-            <label>
-              Size S
-              <input
-                type="text"
-                value={form.sizeS}
-                onChange={(e) => handleFormChange('sizeS', e.target.value)}
-              />
-            </label>
-            <label>
-              Size M
-              <input
-                type="text"
-                value={form.sizeM}
-                onChange={(e) => handleFormChange('sizeM', e.target.value)}
-              />
-            </label>
-            <label>
-              Size L
-              <input
-                type="text"
-                value={form.sizeL}
-                onChange={(e) => handleFormChange('sizeL', e.target.value)}
-              />
-            </label>
           </div>
           <div className="admin-form-actions">
             <button type="submit" className="admin-btn" disabled={saving}>
               {saving ? 'Đang lưu...' : 'Lưu'}
             </button>
-            <button type="button" className="admin-btn admin-btn--ghost" onClick={cancelForm} disabled={saving}>
+            <button
+              type="button"
+              className="admin-btn admin-btn--ghost"
+              onClick={cancelForm}
+              disabled={saving}
+            >
               Hủy
             </button>
           </div>
@@ -417,7 +302,7 @@ useEffect(() => {
     </div>
   );
 
-  return allowed ? <div className="admin-product-container">{bodyContent}</div> : null;
+  return allowed ? <div className="admin-category-container">{bodyContent}</div> : null;
 }
 
-export default AdminProduct;
+export default AdminCategory;
