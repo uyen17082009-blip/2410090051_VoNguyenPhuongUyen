@@ -178,7 +178,6 @@ const Profile = () => {
         <section className="profile-section profile-section--danger">
           <h2 className="profile-section-title">Xóa tài khoản</h2>
           <p className="profile-danger-hint">
-            Xóa khỏi <code>account.json</code> và đăng xuất. Cần mật khẩu để xác nhận.
           </p>
           <form className="profile-form" onSubmit={handleDeleteAccount}>
             <label className="profile-label">
